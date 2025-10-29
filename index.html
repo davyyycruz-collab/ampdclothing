@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amp'd Clothing - Live Your Style</title>
+    <style>
+        /* --- Basic Styling Reset --- */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f4f4f4; /* Light background */
+            color: #333;
+        }
+
+        /* --- Header & Navigation --- */
+        header {
+            background-color: #1a1a1a; /* Dark background for header */
+            color: white;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* ---------------------------------------------------------------------- */
+        /* 👇 NEW AND MODIFIED LOGO STYLES FOR CONSISTENCY 👇 */
+        /* ---------------------------------------------------------------------- */
+        
+        /* 1. Logo Image Style (NEW: must be defined to see the logo image) */
+        .logo a img {
+            height: 40px;
+            width: auto;
+            vertical-align: middle;
+            margin-right: 10px; /* Space between logo image and name */
+        }
+        
+        /* 2. Brand Name Text Style (NEW: must be defined to get the right look) */
+        .brand-name {
+            color: #ff3333; /* Amp'd accent color (red) */
+            font-size: 1.8em;
+            font-weight: bold;
+            letter-spacing: 2px;
+            vertical-align: middle;
+        }
+        
+        /* The old '.logo a' style that only targeted the text logo is now redundant */
+        .logo a {
+            text-decoration: none; /* Keep this to remove underline on the link */
+        }
+
+        /* ---------------------------------------------------------------------- */
+        /* 👆 END OF NEW LOGO STYLES 👆 */
+        /* ---------------------------------------------------------------------- */
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ff3333; /* Hover effect */
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            background: url('hero-bg.jpg') no-repeat center center/cover; /* Replace 'hero-bg.jpg' with your image */
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            background-color: #ff3333;
+            color: white;
+            padding: 10px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #cc0000;
+        }
+
+        /* --- Product Grid --- */
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+
+        .product-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .product-item {
+            background-color: white;
+            padding: 15px;
+            border: 1px solid #ddd;
+            width: calc(33% - 20px); /* Adjust for 3 columns */
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: relative; /* Needed for the hover effect on the entire item */
+            transition: transform 0.2s;
+        }
+        
+        .product-item:hover {
+            transform: translateY(-5px); /* Lift card on hover */
+        }
+
+        /* Style the main product link to cover the entire content */
+        .product-link {
+            text-decoration: none;
+            color: inherit; /* Inherit text color from the parent */
+            display: block;
+        }
+        
+        /* ---------------------------------------------------------------------- */
+        /* 👇 MODIFIED CSS TO MAKE IT LOOK LIKE A BUTTON 👇 */
+        /* ---------------------------------------------------------------------- */
+        .details-text-link {
+            color: #ff3333; /* Use brand color */
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block; /* Allows padding and border to wrap tightly */
+            margin-top: 10px;
+            padding: 5px 10px; /* Added padding for a button feel */
+            border: 2px solid #ff3333; /* Added a border */
+            border-radius: 5px;
+            transition: all 0.2s;
+            font-size: 0.9em; /* Slightly smaller font for the button */
+        }
+        
+        .details-text-link:hover {
+            background-color: #ff3333; /* Fill background on hover */
+            color: white; /* Change text color to white on hover */
+            text-decoration: none; /* Remove underline */
+        }
+        /* ---------------------------------------------------------------------- */
+
+        /* Media query for responsiveness: 2 columns on tablets */
+        @media (max-width: 900px) {
+            .product-item {
+                width: calc(50% - 20px);
+            }
+        }
+        /* Media query for responsiveness: 1 column on phones */
+        @media (max-width: 600px) {
+            .product-item {
+                width: 100%;
+            }
+            .hero {
+                height: 400px;
+            }
+            .hero h1 {
+                font-size: 2.2em;
+            }
+            header {
+                flex-direction: column;
+                padding: 15px;
+            }
+            nav {
+                margin-top: 10px;
+            }
+            nav a {
+                margin: 0 10px;
+            }
+        }
+
+        .product-item img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .product-item h3 {
+            font-size: 1.2em;
+            margin: 10px 0 5px;
+            color: #333; /* Ensure heading color is visible */
+        }
+
+        .product-item .price {
+            color: #ff3333;
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+        
+        /* --- Footer --- */
+        footer {
+            background-color: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <a href="index.html" style="text-decoration: none;">
+                <img src="logo.jpg" alt="Amp'd Clothing Logo"> 
+                <span class="brand-name">AMP'D CLOTHING</span> 
+            </a>
+        </div>
+        <nav>
+            <a href="#new-arrivals">New Arrivals</a>
+            <a href="cart.html">Shopping Bag</a>
+            <a href="about.html">About</a>
+            <a href="account.html">Account</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Not Just Clothes—It is a Frequency.</h1>
+        <p>The freshest streetwear and essential style, for those who dare to be seen.</p>
+        <a href="#new-arrivals" class="cta-button">SHOP THE LATEST DROP</a>
+    </section>
+
+    <section id="new-arrivals" class="container">
+        <h2 style="text-align: center; margin-bottom: 30px;">⚡ NEW ARRIVALS ⚡</h2>
+        
+        <div class="product-grid">
+            
+            <div class="product-item">
+                <a href="utility-jacket-details.html" class="product-link">
+                    <img src="product1.jpg" alt="Amp'd Utility Jacket">
+                    <h3>Amp'd Utility Jacket</h3>
+                    <span class="price">₱‎2499.99</span>
+                    <span class="details-text-link">View Details</span>
+                </a>
+            </div>
+
+            <div class="product-item">
+                <a href="graphic-tee-details.html" class="product-link">
+                    <img src="product2.jpg" alt="Amp'd Graphic Tee">
+                    <h3>"Need Money for Ampt" Graphic Tee</h3>
+                    <span class="price">₱‎499.99</span>
+                    <span class="details-text-link">View Details</span>
+                </a>
+            </div>
+
+            <div class="product-item">
+                <a href="splice-shirt-details.html" class="product-link">
+                    <img src="product3.jpg" alt="Amp'd Splice Shirt">
+                    <h3>Amp'd Splice Shirt</h3>
+                    <span class="price">₱‎799.99</span>
+                    <span class="details-text-link">View Details</span>
+                </a>
+            </div>
+
+            <div class="product-item">
+                <a href="crop-top-details.html" class="product-link">
+                    <img src="product4.jpg" alt="Amp'd Graphic Tee">
+                    <h3>"70 Monster" Crop Top</h3>
+                    <span class="price">₱‎399.99</span>
+                    <span class="details-text-link">View Details</span>
+                </a>
+            </div>
+            
+            <div class="product-item">
+                <a href="ripped-shirt-details.html" class="product-link">
+                    <img src="product5.jpg" alt="Amp'd Graphic Tee">
+                    <h3>Amp'd Ripped Shirt</h3>
+                    <span class="price">₱‎399.99</span>
+                    <span class="details-text-link">View Details</span>
+                </a>
+            </div>
+
+            <div class="product-item">
+                <a href="ripped-tank-details.html" class="product-link">
+                    <img src="product6.jpg" alt="Amp'd Graphic Tee">
+                    <h3>Amp'd Ripped Tank Top</h3>
+                    <span class="price">₱‎399.99</span>
+                    <span class="details-text-link">View Details</span>
+                </a>
+            </div>
+            
+            <div class="product-item">
+                <a href="esoteric-tee-details.html" class="product-link">
+                    <img src="product7.jpg" alt="Esoteric Tee">
+                    <h3>"Lexie" Esoteric Tee</h3>
+                    <span class="price">₱599.99</span>
+                    <span class="details-text-link">View Details</span>
+                </a>
+            </div>
+
+            <div class="product-item">
+                <a href="black-tank-details.html" class="product-link">
+                    <img src="product8.jpg" alt="Esoteric Tee">
+                    <h3>Black Tank Top</h3>
+                    <span class="price">₱‎299.99</span>
+                    <span class="details-text-link">View Details</span>
+                </a>
+            </div>
+            
+        </div>
+    </section>
+    
+    <section id="about" class="container" style="text-align: center;">
+        <h2 style="margin-bottom: 15px;">Our Vision</h2>
+        <p style="max-width: 700px; margin: 0 auto; line-height: 1.6;">
+            To become the global go-to brand for essential streetwear that demands attention. We strive to lead the way in sustainable practices while maintaining an uncompromising commitment to quality and cutting-edge style.
+        </p>
+    </section>
+
+    <footer id="contact">
+        <p>&copy; 2025 Amp'd Clothing. All rights reserved.</p>
+        <p>Email: info@ampdclothing.com | Follow Us: Facebook: Amp'd Clothing; Instagram: ampdclothing_25; Tiktok: Amptd Clothing</p>
+    </footer>
+
+</body>
+</html>

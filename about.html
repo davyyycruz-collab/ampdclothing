@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Amp'd Clothing</title>
+    <style>
+        /* --- General Styling (Copied for consistency) --- */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f4f4f4; 
+            color: #333;
+        }
+
+        /* --- Header & Navigation --- */
+        header {
+            background-color: #1a1a1a; 
+            color: white;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* ---------------------------------------------------------------------- */
+        /* 👇 UPDATED LOGO STYLES FOR IMAGE AND TEXT 👇 */
+        /* ---------------------------------------------------------------------- */
+        
+        /* 1. Logo Image Style (Must be here to display correctly) */
+        .logo a img {
+            height: 40px;
+            width: auto;
+            vertical-align: middle;
+            margin-right: 10px; 
+        }
+        
+        /* 2. Brand Name Text Style */
+        .brand-name {
+            color: #ff3333; 
+            font-size: 1.8em;
+            font-weight: bold;
+            letter-spacing: 2px;
+            vertical-align: middle; 
+        }
+
+        /* ---------------------------------------------------------------------- */
+        /* 👆 END OF UPDATED LOGO STYLES 👆 */
+        /* ---------------------------------------------------------------------- */
+
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ff3333; 
+        }
+
+        .container {
+            width: 80%;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #1a1a1a;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            color: #ff3333;
+            letter-spacing: 1px;
+        }
+        
+        /* --- About Content Specific Styles --- */
+        .mission-vision {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .mission-vision div {
+            flex: 1;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .mission-vision h3 {
+            color: #ff3333;
+            border-bottom: 2px solid #f4f4f4;
+            padding-bottom: 10px;
+        }
+        
+        .image-section {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .image-section img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .team-member {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        /* ---------------------------------------------------------------------- */
+        /* 👇 NEW STYLES FOR BRAND LEADERSHIP & PERMITS 👇 */
+        /* ---------------------------------------------------------------------- */
+
+        /* Brand Leadership Grid (formerly validity-members) */
+        .validity-members {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 members per row */
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .member-card {
+            text-align: center;
+            padding: 10px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        /* 1x1 Photo Aspect Ratio */
+        .member-photo-placeholder {
+            width: 100%; /* Take full width of the card's grid cell */
+            padding-top: 100%; /* Makes the height equal to the width (1:1 aspect ratio) */
+            background-color: #ddd; /* Placeholder background */
+            border-radius: 50%; /* Make photos circular */
+            margin: 0 auto 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .member-photo-placeholder img {
+            /* Style for the actual image when added */
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensures image fills the circle without distortion */
+            border-radius: 50%;
+        }
+        
+        .member-card p {
+            margin: 5px 0;
+            font-size: 0.9em;
+        }
+
+        .member-card .name {
+            font-weight: bold;
+            color: #1a1a1a;
+        }
+
+        .member-card .title {
+            color: #ff3333;
+            font-style: italic;
+            font-size: 0.85em; /* Slightly smaller for credibility text */
+        }
+
+        /* Certificate Section */
+        .certificate-container {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .certificate-main-photo img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .support-photos {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .support-photo-placeholder {
+            width: 30%; /* Take up about 1/3 of the space */
+            max-width: 250px;
+            height: 150px; /* Fixed height for permit placeholders */
+            background-color: #eee;
+            border: 1px dashed #aaa;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            font-size: 0.8em;
+            overflow: hidden;
+            padding: 10px;
+            text-align: center;
+        }
+        
+        .support-photo-placeholder img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        /* Responsive adjustments for Validity Members */
+        @media (max-width: 768px) {
+            .mission-vision {
+                flex-direction: column;
+            }
+            .validity-members {
+                grid-template-columns: repeat(2, 1fr); /* 2 members per row on tablets */
+            }
+            .support-photos {
+                flex-wrap: wrap;
+            }
+            .support-photo-placeholder {
+                width: 45%; /* 2 permits per row on tablets */
+                margin-bottom: 10px;
+            }
+        }
+        @media (max-width: 480px) {
+            .validity-members {
+                grid-template-columns: 1fr; /* 1 member per row on mobile */
+            }
+            .support-photo-placeholder {
+                width: 90%; /* 1 permit per row on mobile */
+            }
+        }
+
+        /* ---------------------------------------------------------------------- */
+        /* 👆 END OF NEW STYLES 👆 */
+        /* ---------------------------------------------------------------------- */
+
+        /* --- Footer --- */
+        footer {
+            background-color: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 60px;
+            font-size: 0.9em;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <a href="index.html" style="text-decoration: none;">
+                <img src="logo.jpg" alt="Amp'd Clothing Logo"> 
+                <span class="brand-name">AMP'D CLOTHING</span> 
+            </a>
+        </div>
+        <nav>
+            <a href="index.html#new-arrivals">New Arrivals</a>
+            <a href="cart.html">Shopping Bag</a> 
+            <a href="about.html">About</a>
+            <a href="account.html">Account</a> 
+            <a href="index.html#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section class="container">
+        <h1>ABOUT AMP'D CLOTHING</h1>
+        <p style="text-align: center; font-size: 1.2em; max-width: 800px; margin: 20px auto 40px;">
+            Amp'd Clothing is more than just a brand—it's a movement. We are dedicated to providing high-quality, comfortable, and aggressively stylish apparel for those who live life in the fast lane and aren't afraid to stand out.
+        </p>
+
+        <hr style="border: 0; border-top: 1px solid #ddd;">
+        
+        <div class="mission-vision">
+            <div>
+                <h3>Our Mission</h3>
+                <p>To empower our customers with clothing that reflects their energy and ambition. We fuse classic comfort with modern, bold design to create pieces that feel as good as they look, turning heads in every setting.</p>
+            </div>
+            <div>
+                <h3>Our Vision</h3>
+                <p>To become the global go-to brand for essential streetwear that demands attention. We strive to lead the way in sustainable practices while maintaining an uncompromising commitment to quality and cutting-edge style.</p>
+            </div>
+        </div>
+        
+        <hr style="border: 0; border-top: 1px solid #ddd;">
+
+        <div class="image-section">
+            <img src="about-main.jpg" alt="A photo of Amp'd Clothing in a styled setting">
+            <p style="font-style: italic; margin-top: 10px;">Quality fabrics. Unstoppable designs.</p>
+        </div>
+
+        <h2>The Amp'd Difference</h2>
+        <div style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+            <div class="team-member">
+                <h4 style="color: #1a1a1a;">Bold Design</h4>
+                <p>From graphic tees to signature hoodies, our styles are always high-energy and eye-catching.</p>
+            </div>
+            <div class="team-member">
+                <h4 style="color: #1a1a1a;">Lasting Quality</h4>
+                <p>We source premium materials that stand up to your active lifestyle and countless washes.</p>
+            </div>
+            <div class="team-member">
+                <h4 style="color: #1a1a1a;">Street Comfort</h4>
+                <p>Style shouldn't sacrifice comfort. Every piece is tailored for a perfect, easy fit.</p>
+            </div>
+        </div>
+        
+        
+        <hr style="border: 0; border-top: 1px solid #ddd; margin-top: 60px;">
+
+        <h2 style="color: #ff3333;">Brand Leadership & Quality Assurance Team 🌟</h2>
+        <p style="text-align: center; max-width: 800px; margin: 10px auto 30px;">
+            Meet the core staff responsible for maintaining Amp'd Clothing's quality, compliance, and design integrity. Their collective expertise validates every item we release.
+        </p>
+
+        <div class="validity-members">
+            <div class="member-card">
+                <div class="member-photo-placeholder">
+                    <img src="member1.jpg" alt="Jane Doe - CEO">
+                </div>
+                <p class="name">Prince Jhun Gabriel Cruz</p>
+                <p class="title">Founder & CEO / Strategic Vision</p>
+            </div>
+            <div class="member-card">
+                <div class="member-photo-placeholder">
+                    <img src="member2.jpg" alt="John Smith - Creative Director">
+                </div>
+                <p class="name">Danna Talde</p>
+                <p class="title">Creative Director / Streetwear Design Expert</p>
+            </div>
+            <div class="member-card">
+                <div class="member-photo-placeholder">
+                    <img src="member3.jpg" alt="Alice Johnson - Head of Sourcing">
+                </div>
+                <p class="name">Hervae Enriquez</p>
+                <p class="title">Head of Sourcing / Textile Science Background</p>
+            </div>
+            <div class="member-card">
+                <div class="member-photo-placeholder">
+                    <img src="member4.jpg" alt="Robert Brown - Production Manager">
+                </div>
+                <p class="name">Alexandra Zhakira Ong</p>
+                <p class="title">Production Manager / Certified Garment Quality</p>
+            </div>
+            <div class="member-card">
+                <div class="member-photo-placeholder">
+                    <img src="member5.jpg" alt="Emily Davis - CFO">
+                </div>
+                <p class="name">James Benedict Caberos</p>
+                <p class="title">CFO / Financial Integrity & Ethics</p>
+            </div>
+            <div class="member-card">
+                <div class="member-photo-placeholder">
+                    <img src="member6.jpg" alt="Michael Wilson - CMO">
+                </div>
+                <p class="name">Juan Miguel Petralba</p>
+                <p class="title">CMO / Brand Compliance & Standards</p>
+            </div>
+            <div class="member-card">
+                <div class="member-photo-placeholder">
+                    <img src="member7.jpg" alt="Sophia Martinez - Logistics Head">
+                </div>
+                <p class="name">Samantha Ferndandez</p>
+                <p class="title">Logistics Head / Supply Chain Validation</p>
+            </div>
+            <div class="member-card">
+                <div class="member-photo-placeholder">
+                    <img src="member8.jpg" alt="David Lee - Customer Experience Head">
+                </div>
+                <p class="name">Dennise Yabes</p>
+                <p class="title">Customer Experience Head / Feedback Validation</p>
+            </div>
+            <div class="member-card">
+                <div class="member-photo-placeholder">
+                    <img src="member9.jpg" alt="Olivia Garcia - Legal Counsel">
+                </div>
+                <p class="name">Irish Gabriel</p>
+                <p class="title">Legal Counsel / Regulatory Compliance Expert</p>
+            </div>
+        </div>
+        
+        <hr style="border: 0; border-top: 1px solid #ddd; margin-top: 60px;">
+
+        <div class="certificate-container">
+            <h2 style="color: #ff3333;">Official Business Permits & Certifications 📜</h2>
+            <p style="text-align: center; max-width: 800px; margin: 10px auto 30px;">
+                Our commitment to legitimacy and ethical operation is backed by the necessary government and industry certifications. Please find the three required business permits below.
+            </p>
+
+            
+            <div class="support-photos">
+                <div class="support-photo-placeholder">
+                    <img src="dti.jpg" alt="Tax Clearance Certificate">
+                </div>
+                <div class="support-photo-placeholder">
+                    <img src="mayor.jpg" alt="Safety & Zoning Permit">
+                </div>
+                <div class="support-photo-placeholder">
+                    <img src="bir.jpg" alt="Industry Compliance Cert.">
+                </div>
+            </div>
+        </div>
+        
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Amp'd Clothing. Live Your Style.</p>
+    </footer>
+
+</body>
+</html>

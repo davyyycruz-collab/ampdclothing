@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Bag - Amp'd Clothing</title>
+    <style>
+        /* --- General Styling (Consistent across pages) --- */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* --- Header & Navigation --- */
+        header {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* 1. Logo Image Style */
+        .logo a img {
+            height: 40px;
+            width: auto;
+            vertical-align: middle;
+            margin-right: 10px; /* Added margin for separation */
+        }
+        
+        /* 2. Brand Name Text Style - THIS WAS MISSING AND IS NOW ADDED */
+        .brand-name {
+            color: #ff3333; 
+            font-size: 1.8em;
+            font-weight: bold;
+            letter-spacing: 2px;
+            vertical-align: middle; 
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ff3333;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+        
+        /* --- Cart Specific Styles --- */
+        
+        .cart-layout {
+            display: flex;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .cart-items {
+            flex: 2; 
+        }
+
+        .cart-summary {
+            flex: 1; 
+            background-color: white;
+            padding: 25px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            height: fit-content; 
+            position: sticky;
+            top: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Table Structure for Items */
+        .cart-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            border-radius: 8px;
+            overflow: hidden; /* Ensures rounded corners look right */
+        }
+
+        .cart-table th {
+            text-align: left;
+            padding: 15px;
+            border-bottom: 2px solid #ff3333;
+            background-color: #f8f8f8;
+            color: #1a1a1a;
+            font-size: 0.9em;
+            text-transform: uppercase;
+        }
+
+        .cart-table td {
+            padding: 20px 15px;
+            border-bottom: 1px solid #eee;
+            vertical-align: middle;
+        }
+        
+        .item-cell {
+            display: flex;
+            align-items: center;
+        }
+
+        .item-cell img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            margin-right: 15px;
+            border-radius: 4px;
+        }
+
+        .item-details h4 {
+            margin: 0 0 5px 0;
+            color: #1a1a1a;
+            font-size: 1.1em;
+        }
+
+        .item-details p {
+            margin: 0;
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .qty-input {
+            width: 50px;
+            text-align: center;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .remove-link {
+            color: #ff3333;
+            text-decoration: none;
+            font-size: 0.85em;
+            margin-top: 5px;
+            display: inline-block;
+        }
+
+        /* --- Cart Summary Styles --- */
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+        }
+
+        .summary-row.total {
+            border-top: 2px solid #ff3333;
+            margin-top: 15px;
+            padding-top: 15px;
+            font-size: 1.4em;
+            font-weight: bold;
+        }
+
+        .cta-button {
+            background-color: #ff3333;
+            color: white;
+            padding: 12px 0;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            width: 100%;
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .cta-button:hover {
+            background-color: #cc0000;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+            font-size: 0.9em;
+        }
+
+        /* --- Responsive Adjustments --- */
+        @media (max-width: 900px) {
+            .cart-layout {
+                flex-direction: column;
+            }
+            .cart-summary {
+                order: -1; 
+                position: static;
+                margin-bottom: 30px;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .cart-table, .cart-table tbody, .cart-table tr, .cart-table td {
+                display: block;
+                width: 100%;
+            }
+            .cart-table th {
+                display: none; /* Hide header columns on mobile */
+            }
+            .cart-table tr {
+                margin-bottom: 15px;
+                border: 1px solid #ddd;
+                border-radius: 8px;
+            }
+            .cart-table td {
+                text-align: right;
+                padding: 10px 15px;
+                border: none;
+                border-bottom: 1px dashed #eee;
+            }
+            .cart-table td:last-child {
+                border-bottom: none;
+            }
+            .cart-table td::before {
+                /* Display column headers as labels on mobile */
+                content: attr(data-label);
+                float: left;
+                font-weight: bold;
+                text-transform: uppercase;
+                color: #666;
+                font-size: 0.8em;
+            }
+            .item-cell {
+                justify-content: flex-end;
+            }
+            .item-cell img {
+                float: left;
+                margin-right: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <a href="index.html" style="text-decoration: none;">
+                <img src="logo.jpg" alt="Amp'd Clothing Logo">
+                <span class="brand-name">AMP'D CLOTHING</span> 
+            </a>
+        </div>
+        <nav>
+            <a href="index.html#new-arrivals">New Arrivals</a>
+            <a href="cart.html">Shopping Bag</a> 
+            <a href="about.html">About</a>
+            <a href="account.html">Account</a>
+            <a href="index.html#contact">Contact</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1 style="font-size: 2.5em; text-align: center; color: #ff3333; margin-bottom: 40px;">Your Shopping Bag</h1> 
+        <div class="cart-layout">
+            
+            <div class="cart-items">
+                <table class="cart-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 50%;">Item Details</th>
+                            <th style="width: 15%; text-align: center;">Quantity</th>
+                            <th style="width: 15%; text-align: right;">Price</th>
+                            <th style="width: 20%; text-align: right;">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-label="Item Details">
+                                <div class="item-cell">
+                                    <img src="product1.jpg" alt="Amp'd Utility Jacket">
+                                    <div class="item-details">
+                                        <h4>Amp'd Utility Jacket</h4>
+                                        <p>Size: L, Color: Black</p>
+                                        <a href="#" class="remove-link">Remove</a>
+                                    </div>
+                                </div>
+                            </td>
+                            <td data-label="Quantity" style="text-align: center;">
+                                <input type="number" value="1" min="1" class="qty-input">
+                            </td>
+                            <td data-label="Price" style="text-align: right;">₱‎2499.99</td>
+                            <td data-label="Total" style="font-weight: bold; text-align: right;">₱‎2499.99</td>
+                        </tr>
+
+                        <tr>
+                            <td data-label="Item Details">
+                                <div class="item-cell">
+                                    <img src="product7.jpg" alt=""Lexie" Esoteric Tee">
+                                    <div class="item-details">
+                                        <h4>"Lexie" Esoteric Tee</h4>
+                                        <p>Size: M, Color: White</p>
+                                        <a href="#" class="remove-link">Remove</a>
+                                    </div>
+                                </div>
+                            </td>
+                            <td data-label="Quantity" style="text-align: center;">
+                                <input type="number" value="2" min="1" class="qty-input">
+                            </td>
+                            <td data-label="Price" style="text-align: right;">₱‎599.99</td>
+                            <td data-label="Total" style="font-weight: bold; text-align: right;">₱‎1199.98</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <p style="margin-top: 20px;">
+                    <a href="index.html#new-arrivals" style="color: #ff3333; text-decoration: none; font-weight: bold;">&larr; Continue Shopping</a>
+                </p>
+
+            </div>
+
+            <div class="cart-summary">
+                <h3 style="margin-top: 0; color: #1a1a1a;">Order Summary</h3>
+                
+                <div class="summary-row">
+                    <span>Subtotal (3 items)</span>
+                    <span>₱‎3699.97</span>
+                </div>
+                <div class="summary-row">
+                    <span>Shipping Estimate</span>
+                    <span>₱‎59.00</span>
+                </div>
+                <div class="summary-row">
+                    <span>Tax Estimate (12%)</span>
+                    <span>₱‎444.00</span>
+                </div>
+
+                <div class="summary-row total">
+                    <span>Order Total</span>
+                    <span style="color: #ff3333;">₱‎4202.97</span>
+                </div>
+
+                <a href="#" class="cta-button">PROCEED TO CHECKOUT</a>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Amp'd Clothing. Live Your Style.</p>
+    </footer>
+
+</body>
+</html>

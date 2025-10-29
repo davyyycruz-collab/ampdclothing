@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>"Lexie" Esoteric Tee - Product Details</title>
+    <style>
+        /* Reusing global styles for consistency */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo a img { height: 40px; width: auto; vertical-align: middle; margin-right: 10px; }
+        .brand-name { color: #ff3333; font-size: 1.8em; font-weight: bold; letter-spacing: 2px; vertical-align: middle; }
+        .logo a { text-decoration: none; }
+        nav a { color: white; text-decoration: none; margin-left: 25px; font-weight: 500; transition: color 0.3s; }
+        nav a:hover { color: #ff3333; }
+        footer { background-color: #1a1a1a; color: white; text-align: center; padding: 20px 0; margin-top: 40px; font-size: 0.9em; }
+
+        /* --- Product Page Specific Styles --- */
+        .product-container {
+            display: flex;
+            max-width: 1200px;
+            margin: 40px auto;
+            background-color: white;
+            padding: 30px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-gallery {
+            flex: 1;
+            padding-right: 40px;
+        }
+
+        .main-image img {
+            width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+        }
+
+        .details-section {
+            flex: 1;
+        }
+
+        .details-section h1 {
+            font-size: 2.5em;
+            margin-top: 0;
+            color: #1a1a1a;
+        }
+
+        .product-price {
+            font-size: 1.8em;
+            color: #ff3333;
+            margin: 15px 0 25px;
+            font-weight: bold;
+        }
+        
+        /* Selectors */
+        .selector-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+            margin-top: 15px;
+        }
+
+        .selector-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+        
+        /* Add to Cart Button */
+        .add-to-cart-btn {
+            background-color: #ff3333;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 30px;
+            transition: background-color 0.3s;
+        }
+
+        .add-to-cart-btn:hover {
+            background-color: #cc0000;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 900px) {
+            .product-container {
+                flex-direction: column;
+                padding: 20px;
+                margin: 20px auto;
+            }
+            .image-gallery {
+                padding-right: 0;
+                margin-bottom: 30px;
+            }
+            .details-section h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <a href="index.html" style="text-decoration: none;">
+                <img src="logo.jpg" alt="Amp'd Clothing Logo"> 
+                <span class="brand-name">AMP'D CLOTHING</span> 
+            </a>
+        </div>
+        <nav>
+            <a href="index.html#new-arrivals">New Arrivals</a>
+            <a href="cart.html">Shopping Bag</a>
+            <a href="about.html">About</a>
+            <a href="account.html">Account</a>
+            <a href="index.html#contact">Contact</a>
+        </nav>
+    </header>
+
+    <div class="product-container">
+        
+        <div class="image-gallery">
+            <div class="main-image">
+                <img src="product7.jpg" alt="Lexie Esoteric Tee - Main View">
+            </div>
+        </div>
+
+        <div class="details-section">
+            <h1>"Lexie" Esoteric Tee</h1>
+            
+            <p class="product-price">₱599.99</p>
+
+            <h3>Product Description</h3>
+            <p>Tap into a higher frequency with the "Lexie" Esoteric Tee. Featuring intricate, occult-inspired graphic work, this shirt is designed for those who appreciate hidden meanings and bold style. The premium cotton fabric offers a luxurious feel and drapes perfectly, making it a standout piece whether worn alone or layered.</p>
+            
+            <hr>
+
+            <div class="selector-group">
+                <label for="size-select">SIZE:</label>
+                <select id="size-select" name="size">
+                    <option value="">-- Please Select --</option>
+                    <option value="S">Small (S)</option>
+                    <option value="M">Medium (M)</option>
+                    <option value="L">Large (L)</option>
+                    <option value="XL">Extra Large (XL)</option>
+                </select>
+            </div>
+
+            <div class="selector-group">
+                <label for="color-select">COLOR:</label>
+                <select id="color-select" name="color">
+                    <option value="WashedBlack">Washed Black</option>
+                    <option value="StoneGrey">Stone Grey</option>
+                </select>
+            </div>
+
+            <div class="selector-group">
+                <label for="quantity-select">QTY:</label>
+                <input type="number" id="quantity-select" name="quantity" value="1" min="1" max="10" style="width: 100px; padding: 10px;">
+            </div>
+
+            <button class="add-to-cart-btn">ADD TO SHOPPING BAG</button>
+            
+            <hr style="margin-top: 30px;">
+            
+            <h3>Details & Care</h3>
+            <ul>
+                <li>**Material:** Mid-weight, ringspun cotton.</li>
+                <li>**Features:** Soft-hand screen print, ribbed crewneck.</li>
+                <li>**Fit:** Oversized/Boxy Fit.</li>
+                <li>**Care:** Machine wash cold, air dry to protect the print.</li>
+            </ul>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Amp'd Clothing. All rights reserved.</p>
+        <p>Email: info@ampdclothing.com | Follow Us: Facebook: Amp'd Clothing; Instagram: ampdclothing_25; Tiktok: Amptd Clothing</p>
+    </footer>
+
+</body>
+</html>

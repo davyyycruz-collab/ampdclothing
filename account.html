@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account - Amp'd Clothing</title>
+    <style>
+        /* --- Basic Styling Reset --- */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f4f4f4; 
+            color: #333;
+        }
+
+        /* --- Header & Navigation (Copied from index.html for consistency) --- */
+        header {
+            background-color: #1a1a1a; 
+            color: white;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* ---------------------------------------------------------------------- */
+        /* 👇 NEW AND MODIFIED LOGO STYLES 👇 */
+        /* ---------------------------------------------------------------------- */
+        
+        /* 1. Logo Image Style */
+        .logo a img {
+            height: 40px;
+            width: auto;
+            vertical-align: middle;
+            margin-right: 10px; /* Space between logo image and name */
+        }
+        
+        /* 2. Brand Name Text Style */
+        .brand-name {
+            color: #ff3333; /* Use your accent color */
+            font-size: 1.8em;
+            font-weight: bold;
+            letter-spacing: 2px;
+            vertical-align: middle; /* Ensures vertical alignment with the image */
+        }
+        
+        /* The old '.logo a' text style is now overwritten by the new styles above */
+
+        /* ---------------------------------------------------------------------- */
+        /* 👆 END OF NEW LOGO STYLES 👆 */
+        /* ---------------------------------------------------------------------- */
+
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ff3333; 
+        }
+
+        .container {
+            width: 80%;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+
+        /* --- CTA Button Style (Copied for consistency) --- */
+        .cta-button {
+            background-color: #ff3333;
+            color: white;
+            padding: 10px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background-color: #cc0000;
+        }
+        
+        /* --- Form Specific Styles --- */
+        .form-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 40px;
+        }
+
+        .form-box {
+            background-color: white;
+            padding: 30px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            width: 45%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-box h3 {
+            border-bottom: 2px solid #ff3333;
+            padding-bottom: 10px;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        input[type="email"], 
+        input[type="password"],
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0 20px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box; /* Crucial for padding/width calculation */
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 60px;
+            font-size: 0.9em;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .form-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .form-box {
+                width: 90%;
+                margin-bottom: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <a href="index.html" style="text-decoration: none;">
+                <img src="logo.jpg" alt="Amp'd Clothing Logo"> 
+                <span class="brand-name">AMP'D CLOTHING</span> 
+            </a>
+        </div>
+        <nav>
+            <a href="index.html#new-arrivals">New Arrivals</a>
+            <a href="cart.html">Shopping Bag</a> 
+            <a href="about.html">About</a>
+            <a href="account.html">Account</a> 
+            <a href="index.html#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section class="container">
+        <h1 style="text-align: center; font-size: 2.5em; color: #ff3333;">Manage Your Amp'd Vibe</h1>
+
+        <div class="form-container">
+            
+            <div class="form-box">
+                <h3>Log In</h3>
+                <form action="#" method="POST"> 
+                    <label for="login-email">Email:</label>
+                    <input type="email" id="login-email" name="email" required>
+                    
+                    <label for="login-password">Password:</label>
+                    <input type="password" id="login-password" name="password" required>
+                    
+                    <button type="submit" class="cta-button" style="width: 100%; border: none;">Log In</button>
+                    <p style="text-align: center; margin-top: 15px; font-size: 0.9em;"><a href="#" style="color: #333;">Forgot Password?</a></p>
+                </form>
+            </div>
+
+            <div class="form-box">
+                <h3>Sign Up</h3>
+                <form action="#" method="POST"> 
+                    <label for="signup-name">Name:</label>
+                    <input type="text" id="signup-name" name="name" required>
+                    
+                    <label for="signup-email">Email:</label>
+                    <input type="email" id="signup-email" name="email" required>
+                    
+                    <label for="signup-password">Password:</label>
+                    <input type="password" id="signup-password" name="password" required>
+                    
+                    <button type="submit" class="cta-button" style="width: 100%; border: none;">Create Account</button>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Amp'd Clothing. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
